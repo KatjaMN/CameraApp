@@ -63,10 +63,9 @@ export default function ImagePickerKMN() {
 
   //Flatgrid items
   const [items, setItems] = useState([
-    { photo: require('../photos/kuva04.jpg') },
-    { photo: require('../photos/kuva05.jpg') },
-    { photo: require('../photos/kuva06.jpg') },
-    { image: image }
+    { info: 'Flatgrid here' },
+    { info: 'Flatgrid here' },
+    { info: 'Flatgrid here' }
   ]);
 
   return (
@@ -85,8 +84,7 @@ export default function ImagePickerKMN() {
         spacing={10}
         renderItem={({ item }) => (
           <View style={[styles.itemContainer]}>
-          
-            <Text>{item.image}</Text>
+            <Text style={styles.itemName}>{item.info}</Text>
           </View>
         )}
       />
@@ -95,7 +93,6 @@ export default function ImagePickerKMN() {
 
 };
 
-//  <Image style={styles.galleryphoto} source={{ uri: item.image }} />
 
 const styles = StyleSheet.create({
   container: {
@@ -129,13 +126,8 @@ const styles = StyleSheet.create({
 
   itemName: {
     fontSize: 16,
-    color: '#fff',
+    color: '#000',
     fontWeight: '600',
   },
 
-  itemCode: {
-    fontWeight: '600',
-    fontSize: 12,
-    color: '#fff',
-  },
 });

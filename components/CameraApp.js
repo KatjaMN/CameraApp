@@ -20,7 +20,6 @@ export default function CameraApp() {
   const [list, setList] = useState([]);
 
 
-
   //Camera
   useEffect(() => {
     askCameraPermission();
@@ -73,19 +72,20 @@ export default function CameraApp() {
 
 
 
-
   //Flatgrid items
   const [items, setItems] = useState([
-    { photo: require('../photos/kuva04.jpg') },
-    { photo: require('../photos/kuva05.jpg') },
-    { photo: require('../photos/kuva06.jpg') },
-    { info: list.photoBase64 }
+    { info: 'Flatgrid here' },
+    { info: 'Flatgrid here' },
+    { info: 'Flatgrid here' }
   ]);
 
+  //Items, that don't work:
+
+  // { photo: require({ uri: photo }) },
+  // { info: list.photoBase64 },
 
 
   return (
-
     <View style={{ flex: 1 }}>
       {hasCameraPermission ? (
         <View style={{ flex: 1 }}>
@@ -98,7 +98,7 @@ export default function CameraApp() {
           <View style={{ flex: 4 }}>
             <Image style={{ flex: 1 }} source={{ uri: `data:image/jpg;base64,${photoBase64}` }} />
           </View>
-          <View style={styles.button}>
+          <View style={styles.button2}>
             <Button title="Save photo to Gallery" onPress={saveToGallery} />
 
           </View>
@@ -106,14 +106,10 @@ export default function CameraApp() {
       ) : (
         <Text>No access to camera</Text>
       )}
-
-
       <FlatGrid
         itemDimension={100}
         data={items}
         style={styles.gridView}
-        // staticDimension={300}
-        // fixed
         spacing={10}
         renderItem={({ item }) => (
           <View style={[styles.itemContainer]}>
@@ -122,14 +118,11 @@ export default function CameraApp() {
         )}
       />
     </View>
-
   );
 };
 
 //<Image style={ styles.galleryphoto } source={{ uri: `data:image/jpg;base64,${photoBase64}` }} />
-//Image as local file: { photo: require('../photos/kuva04.jpg')}, <Image style={ styles.galleryphoto } source={item.photo} />
-//  <Text style={styles.itemName}>{item.name}</Text>
-//uri: item.photo
+
 
 const styles = StyleSheet.create({
   container: {
@@ -141,13 +134,19 @@ const styles = StyleSheet.create({
 
   camera: {
     flex: 1,
-    width: '50%',
-    paddingTop: 200
+    width: '100%',
+    paddingTop: 120
   },
 
   button: {
     width: '50%',
+    height: 100,
     paddingTop: 20
+  },
+
+  button2: {
+    width: '50%',
+    paddingTop: 100
   },
 
   galleryphoto: {
@@ -159,23 +158,18 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flex: 1,
   },
+
   itemContainer: {
     justifyContent: 'flex-end',
     borderRadius: 5,
     padding: 10,
     height: 150,
   },
+
   itemName: {
     fontSize: 16,
-    color: '#fff',
+    color: '#000',
     fontWeight: '600',
-  },
-  itemCode: {
-    fontWeight: '600',
-    fontSize: 12,
-    color: '#fff',
-  },
-
-
+  }
 
 });
